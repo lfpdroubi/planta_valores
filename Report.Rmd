@@ -1,0 +1,56 @@
+---
+title: "Trabalho"
+author: 
+  - "Willian Zonato"
+  - "Luiz Fernando Palin Droubi"
+date: "14 de agosto de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(knitr)
+library(readxl)
+library(dplyr)
+library(sp)
+library(leaflet)
+library(gstat)
+library(automap)
+```
+
+# 1
+
+```{r}
+source("E:\\Documents\\appraiseR\\R\\kml.R")
+df <- read.kml("Sto_Amaro_4.kml", "Meus lugares")
+df$z <- NULL
+df$ID <- df$Name
+df$Name <- NULL
+df$Description <- NULL
+df$layer <- NULL
+df <- df[, c("ID", "N", "E")]
+kable(df)
+Dados <- read_excel("Dados.xlsx")
+data <- inner_join(Dados, df, by = "ID")
+spdata <- 
+  SpatialPointsDataFrame(coords = data[c("E", "N")],
+                         data = subset(data, select = -c(E,N)),
+                         proj4string = sp::CRS("+proj=longlat +datum=WGS84 +no_defs"))
+```
+
+```{r mapa}
+spdata %>% 
+  leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addCircleMarkers(color = ~pavimentacao,
+                   radius = ~10*as.vector(scale(VU)),
+                   popup = ~ID,
+                   label = ~ID,
+                   fillOpacity = 0.5)
+```
+
+```{r modelo}
+fit <- lm(Valor ~ Area + BR282 + topografia + pavimentacao + situacao, data = data)
+summary(fit)
+```
+
