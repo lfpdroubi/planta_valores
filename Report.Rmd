@@ -12,10 +12,14 @@ knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
 library(readxl)
 library(dplyr)
+library(sjPlot)
+library(car)
 library(sp)
+library(rgdal)
 library(leaflet)
 library(gstat)
 library(automap)
+
 ```
 
 # 1
@@ -32,14 +36,31 @@ df <- df[, c("ID", "N", "E")]
 kable(df)
 Dados <- read_excel("Dados.xlsx")
 data <- inner_join(Dados, df, by = "ID")
-spdata <- 
-  SpatialPointsDataFrame(coords = data[c("E", "N")],
-                         data = subset(data, select = -c(E,N)),
-                         proj4string = sp::CRS("+proj=longlat +datum=WGS84 +no_defs"))
+
+# Espacializar os dados
+data <- 
+ SpatialPointsDataFrame(coords = data[c("E", "N")],
+                        data = data,
+                        proj4string = sp::CRS("+proj=longlat +datum=WGS84 +no_defs"))
+# 2º opção -- deleta as colunas de coordenadas
+# coordinates(data) <- c("E", "N")
+# proj4string(data) <- CRS("+init=epsg:4326") # WGS 84
+
+# Conversão de coordenadas para SIRGAS2000
+CRS.new <- CRS("+init=epsg:31997")
+dataSIRGAS2000 <- spTransform(data, CRS.new)
+
+# Para escrever o shapefile no disco:  
+ writeOGR(dataSIRGAS2000, 
+          dsn = "E:\\Documents\\UFSC\\Planta de Valores\\Trabalho\\dados", 
+          layer = "dados",
+          driver = "ESRI Shapefile",
+          overwrite_layer = TRUE,
+          delete_dsn = TRUE)
 ```
 
 ```{r mapa}
-spdata %>% 
+data %>% 
   leaflet() %>% 
   addProviderTiles(providers$CartoDB.Positron) %>% 
   addCircleMarkers(color = ~pavimentacao,
@@ -52,5 +73,14 @@ spdata %>%
 ```{r modelo}
 fit <- lm(Valor ~ Area + BR282 + topografia + pavimentacao + situacao, data = data)
 summary(fit)
+```
+
+```{r}
+boxCox(fit)
+```
+
+```{r, results='asis'}
+fit <- update(fit, log(Valor) ~ log(Area) + topografia + situacao)
+tab_model(fit)
 ```
 
