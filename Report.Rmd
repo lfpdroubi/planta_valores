@@ -1,30 +1,63 @@
 ---
-title: "Trabalho"
-author: 
-  - "Willian Zonato"
-  - "Luiz Fernando Palin Droubi"
+title: "Trabalho 2"
+author:
+- Willian Zonato
+- Luiz Fernando Palin Droubi
 date: "14 de agosto de 2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, 
+                      results = "hide",  out.width = "70%",
+                      fig.align = "center", fig.pos = "h")
+library(appraiseR)
 library(knitr)
+library(kableExtra)
 library(readxl)
 library(dplyr)
-library(sjPlot)
+library(stargazer)
 library(car)
 library(sp)
 library(rgdal)
 library(leaflet)
+library(htmlwidgets)
+library(webshot)
 library(gstat)
 library(automap)
-
+library(lmtest)
+library(mosaic)
+library(strucchange)
+library(nortest)
+library(normtest)
+library(corrplot)
+library(raster)
+type <- knitr::opts_knit$get("rmarkdown.pandoc.to")
+options(digits = 10)
+brformat <- function(x, decimal.mark = ",", big.mark = ".", digits = 2, nsmall = 2, scientific = FALSE, ...) {
+  format(x, decimal.mark = decimal.mark, big.mark = big.mark, digits = digits, 
+         nsmall = nsmall, scientific = scientific, ...)
+}
+reais <- function(prefix = "R$", ...) {
+  function(x) paste(prefix, brformat(x, ...), sep = "")
+}
+porcento <- function (x) {
+    if (length(x) == 0) 
+        return(character())
+    x <- plyr::round_any(x, scales:::precision(x)/100)
+    paste0(x * 100, "\\%")
+}
 ```
 
-# 1
+# Importação dos dados
 
-```{r}
+a. Coordenadas
+
+As coordenadas foram extraídas de arquivo .kml diretamente para o `r R.version.string`.
+
+```{r, echo = c(1,2)}
 source("E:\\Documents\\appraiseR\\R\\kml.R")
 df <- read.kml("Sto_Amaro_4.kml", "Meus lugares")
 df$z <- NULL
@@ -33,54 +66,372 @@ df$Name <- NULL
 df$Description <- NULL
 df$layer <- NULL
 df <- df[, c("ID", "N", "E")]
-kable(df)
-Dados <- read_excel("Dados.xlsx")
-data <- inner_join(Dados, df, by = "ID")
+kable(head(df), digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","))
+```
 
-# Espacializar os dados
+b. Dados do Excel
+
+Os dados da pesquisa de mercado foram lidos diretamente no `r R.version.string`.
+
+```{r, echo = 1}
+Dados <- read_excel("Dados.xlsx")
+Dados$pavimentado <- factor(Dados$pavimentado, levels = c("sim", "nao"))
+kable(head(Dados[, 1:9]), digits = 2,
+      format.args = list(big.mark = ".", decimal.mark = ","))
+```
+
+c. Aglutinação dos dados
+
+Posteriormente, os dados da pesquisa foram mesclados com as coordenadas dos dados. O conjunto de dados assim obtido pode ser visto na tabela 
+
+```{r, echo = 1}
+data <- inner_join(df, Dados, by = "ID")
+kable(data[, 1:11], digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ",")) %>%
+  landscape()
+```
+
+
+# Espacialização
+
+a. Criação do conjunto de dados espaciais
+
+```{r}
 data <- 
  SpatialPointsDataFrame(coords = data[c("E", "N")],
                         data = data,
                         proj4string = sp::CRS("+proj=longlat +datum=WGS84 +no_defs"))
+data$long <- coordinates(data)[, "E"]
+data$lat <- coordinates(data)[, "N"]
 # 2º opção -- deleta as colunas de coordenadas
 # coordinates(data) <- c("E", "N")
 # proj4string(data) <- CRS("+init=epsg:4326") # WGS 84
+miss <- is.na(data$Valor)
+```
 
+b. Plotagem
+
+```{r}
+spplot(data[!miss, ], "Valor")
+```
+
+c. Variograma
+
+```{r}
+plot(variogram(Valor ~ 1, data = data[!miss, ]))
+```
+
+d. Conversão de unidades
+
+```{r}
 # Conversão de coordenadas para SIRGAS2000
 CRS.new <- CRS("+init=epsg:31997")
 dataSIRGAS2000 <- spTransform(data, CRS.new)
+dataSIRGAS2000@data$E <- coordinates(dataSIRGAS2000)[, "E"]
+dataSIRGAS2000@data$N <- coordinates(dataSIRGAS2000)[, "N"]
+kable(dataSIRGAS2000, digits = 0, 
+      format.args = list(big.mark = ".", decimal.mark = ","))
+```
 
+e. Variograma com tendência espacial
+
+```{r}
+Valor_vgm <- variogram(log(Valor) ~ E + N, dataSIRGAS2000[!miss, ])
+plot(Valor_vgm) 
+```
+
+f. Ajuste de variograma
+
+```{r}
+# Fit the variogram
+v_model <- fit.variogram(
+  Valor_vgm, 
+  model = vgm(
+    model = "Ste",
+    nugget = 0.25,
+    psill = 1.25,
+    range = 1000,
+    kappa = 0.5
+  )
+)
+plot(Valor_vgm, model = v_model)
+```
+
+g. Krigagem
+
+* Manual
+
+```{r}
+# Define a 100m square grid over the polygon extent. The first parameter is
+# the bottom left corner.
+grid <- GridTopology(bbox(dataSIRGAS2000)[, "min"],  c(100, 100),
+                     c(72, 48))
+# Create points with the same coordinate system as the boundary
+gridpoints <- SpatialPoints(grid, proj4string = CRS(projection(dataSIRGAS2000)))
+plot(gridpoints)
+# Crop out the points outside the boundary
+cropped_gridpoints <- crop(gridpoints, dataSIRGAS2000)
+plot(cropped_gridpoints)
+
+# Convert to SpatialPixels
+spgrid <- SpatialPixels(cropped_gridpoints)
+coordnames(spgrid) <- c("E", "N")
+plot(spgrid)
+
+# Do kriging predictions over the grid
+V_grid <- krige(Valor ~ E + N, dataSIRGAS2000[!miss,], 
+                 newdata = spgrid, 
+                 model = v_model)
+
+spplot(V_grid)
+```
+
+* Automática
+
+```{r}
+## Auto-kriging at point locations
+# Kriging with linear trend, predicting over the missing points
+v_auto <- autoKrige(
+  Valor ~ E + N, 
+  input_data = dataSIRGAS2000[!miss, ], 
+  new_data = spgrid, 
+  model = "Mat"
+)
+plot(v_auto)
+
+# Remember predictions from manual kriging
+plot(v_auto)
+```
+
+
+h. Escrita do Shapefile no disco
+
+```{r}
 # Para escrever o shapefile no disco:  
- writeOGR(dataSIRGAS2000, 
-          dsn = "E:\\Documents\\UFSC\\Planta de Valores\\Trabalho\\dados", 
+ writeOGR(data, 
+          dsn = "E:\\Documents\\UFSC\\Planta de Valores\\Trabalho", 
           layer = "dados",
           driver = "ESRI Shapefile",
           overwrite_layer = TRUE,
           delete_dsn = TRUE)
 ```
 
-```{r mapa}
-data %>% 
+# Confecção de mapas temáticos
+
+a. Topografia
+
+```{r mapa1}
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("navy", "red"), domain = c("plano", "acidentado"))
+## create map
+m1 <- data %>% 
   leaflet() %>% 
   addProviderTiles(providers$CartoDB.Positron) %>% 
-  addCircleMarkers(color = ~pavimentacao,
+  addCircleMarkers(color = ~pal(topografia),
                    radius = ~10*as.vector(scale(VU)),
                    popup = ~ID,
                    label = ~ID,
+                   stroke = FALSE,
                    fillOpacity = 0.5)
+# HTML
+#m1
+# PDF
+## save html to png
+saveWidget(m1, "temp.html", selfcontained = FALSE)
+webshot("temp.html", file = "Map1.png",
+        cliprect = "viewport")
 ```
 
+b. Pavimentação
+
+```{r mapa2}
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("navy", "green", "red"), domain = c("asfalto", "blokret", "sem"))
+## create map
+m2 <- data %>% 
+  leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addCircleMarkers(color = ~pal(pavimentacao),
+                   radius = ~10*as.vector(scale(VU)),
+                   popup = ~ID,
+                   label = ~ID,
+                   stroke = FALSE,
+                   fillOpacity = 0.5)
+# HTML
+#m2
+# PDF
+## save html to png
+saveWidget(m2, "temp.html", selfcontained = FALSE)
+webshot("temp.html", file = "Map2.png",
+         cliprect = "viewport")
+```
+
+c. Situação
+
+```{r mapa3}
+# Create a palette that maps factor levels to colors
+pal <- colorFactor(c("navy", "red"), domain = c("meio", "esquina"))
+## create map
+m3 <- data %>% 
+  leaflet() %>% 
+  addProviderTiles(providers$CartoDB.Positron) %>% 
+  addCircleMarkers(color = ~pal(situacao),
+                   radius = ~10*as.vector(scale(VU)),
+                   popup = ~ID,
+                   label = ~ID,
+                   stroke = FALSE,
+                   fillOpacity = 0.5)
+# HTML
+#m3
+# PDF
+## save html to png
+saveWidget(m3, "temp.html", selfcontained = FALSE)
+webshot("temp.html", file = "Map3.png",
+         cliprect = "viewport")
+```
+
+# Ajuste do modelo OLS
+
 ```{r modelo}
-fit <- lm(Valor ~ Area + BR282 + topografia + pavimentacao + situacao, data = data)
+fit <- lm(VU ~ Area + Geral + topografia + pavimentado + situacao, data = data)
 summary(fit)
 ```
+
+# Diagrama de Box-Cox
 
 ```{r}
 boxCox(fit)
 ```
 
+# Modelo final
+
 ```{r, results='asis'}
-fit <- update(fit, log(Valor) ~ log(Area) + topografia + situacao)
-tab_model(fit)
+fit <- update(fit, log(VU) ~ log(Area) + Geral + topografia, subset = -c(3, 21))
+stargazer(fit, header = FALSE, type = type,
+          report = "vcstp*", ci = TRUE, single.row = TRUE)
 ```
 
+## Diagnóstico básico
+
+```{r plotfit, fig.show='hold', out.width="34%", results='hide', fig.keep='all', fig.cap="Gráficos básicos do modelo"}
+mplot(fit, system = "ggplot2", which = 1:6)
+```
+
+## Testes do modelo
+
+### Homoscedasticidade
+
+```{r}
+bptest(fit)
+```
+
+### Normalidade
+
+a. Teste de Pearson ($\chi^2$)
+
+```{r chi2}
+pearson.test(resid(fit))
+```
+
+b. Teste de Lilliefors (Kolgomorov-Smirnov):
+
+```{r lilliefors}
+lillie.test(resid(fit))
+```
+
+c. Teste de Shapiro-Wilk:
+
+```{r shapiro}
+shapiro.test(resid(fit))
+```
+
+d. Teste de Anderson-Darling:
+
+```{r andersondarling}
+ad.test(resid(fit))
+```
+
+e. Teste de Jarque-Bera:
+
+```{r jarquebera}
+jb.norm.test(resid(fit))
+```
+
+
+\newpage
+
+f. Histograma
+
+```{r histograma, fig.cap='Histograma dos resíduos padronizados', out.width="45%"}
+res <- data.frame(residuals = rstandard(fit))
+ggplot(res, aes(residuals)) + 
+  geom_histogram(aes(y = ..density..), bins = 8) + 
+  stat_function(fun = dnorm,
+                args = list(mean = mean(res$residuals), sd = sd(res$residuals)),
+                lwd = 2, col = 'red')
+```
+
+g. Teste K-S (Kolgomorov-Smirnov) [@KS]
+
+```{r KS, fig.cap='Curva da função de distribuição acumulada (FDA) empírica', out.width="45%"}
+# Ver https://rpubs.com/mharris/KSplot
+sample1 <- rnorm(10000, 0, 1)
+sample2 <- rstandard(fit)
+group <- c(rep("Normal", length(sample1)), rep("Resíduos-Padrão", length(sample2)))
+dat <- data.frame(KSD = c(sample1,sample2), group = group)
+# create ECDF of data
+cdf1 <- ecdf(sample1) 
+cdf2 <- ecdf(sample2) 
+# find min and max statistics to draw line between points of greatest distance
+minMax <- seq(min(sample1, sample2), max(sample1, sample2), length.out=length(sample1)) 
+x0 <- minMax[which( abs(cdf1(minMax) - cdf2(minMax)) == max(abs(cdf1(minMax) - cdf2(minMax))) )] 
+y0 <- cdf1(x0) 
+y1 <- cdf2(x0) 
+ggplot(dat, aes(x = KSD, group = group, color = group))+
+  stat_ecdf(size=1) +
+    xlab("Resíduos") +
+    ylab("ECDF") +
+    #geom_line(size=1) +
+    geom_segment(aes(x = x0[1], y = y0[1], xend = x0[1], yend = y1[1]),
+        linetype = "dashed", color = "red") +
+    geom_point(aes(x = x0[1] , y= y0[1]), color = "red", size = 4) +
+    geom_point(aes(x = x0[1] , y= y1[1]), color = "red", size = 4) +
+    ggtitle("Teste K-S (Kolgomorov-Smirnov)") +
+    theme(legend.title=element_blank(),
+          legend.position = "bottom")
+```
+
+
+### Gráficos do modelo
+
+a. Na mediana das variáveis
+
+```{r, out.width="100%", fig.cap = "Gráficos dos regressores em função da variável dependente (em cada gráfico, os outros regressores estão em seus valores médios."}
+p <- plotmod(fit, interval = "confidence", func = "log")
+names <- names(p$plots)
+for (name in names) {
+  p$plots[[name]] <- p$plots[[name]] + scale_y_continuous(labels = reais(nsmall = 0))
+}
+p
+```
+
+\newpage
+
+b. No ponto de avaliação
+
+```{r, out.width="100%", fig.cap = "Gráficos dos regressores em função da variável dependente (em cada gráfico, os outros regressores estão em seus valores médios."}
+p <- plotmod(fit, interval = "confidence", func = "log", local =  list(Area = 360, Geral = "sim", topografia = "plano"))
+names <- names(p$plots)
+for (name in names) {
+  p$plots[[name]] <- p$plots[[name]] + scale_y_continuous(labels = reais(nsmall = 0))
+}
+p
+```
+
+\newpage
+IV. Poder de Predição
+
+```{r, out.width="50%", fig.cap = "Poder de Predição."}
+power_plot(fit)
+```
