@@ -1,18 +1,23 @@
 ---
-title: "Trabalho 2"
+title: "Trabalho 2 de TGT410029 -- Leg. Territorial e PVG"
 author:
 - Willian Zonato
 - Luiz Fernando Palin Droubi
-date: "14 de agosto de 2018"
+date: "20 de agosto de 2018"
 output:
-  pdf_document: default
+  pdf_document: 
+    includes:
+      before_body: bbody.tex
+      in_header: preamble.tex
+    keep_tex: yes
+    latex_engine: xelatex
+    number_sections: yes
   html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, 
-                      results = "hide",  out.width = "70%",
-                      fig.align = "center", fig.pos = "h")
+                      out.width = "70%", fig.align = "center", fig.pos = "H")
 library(appraiseR)
 library(knitr)
 library(kableExtra)
@@ -55,7 +60,7 @@ porcento <- function (x) {
 
 a. Coordenadas
 
-As coordenadas foram extraídas de arquivo .kml diretamente para o `r R.version.string`.
+As coordenadas foram extraídas de arquivo .kml[^1] diretamente para o `r R.version.string`.
 
 ```{r, echo = c(1,2)}
 source("E:\\Documents\\appraiseR\\R\\kml.R")
@@ -66,9 +71,13 @@ df$Name <- NULL
 df$Description <- NULL
 df$layer <- NULL
 df <- df[, c("ID", "N", "E")]
-kable(head(df), digits = 2, 
-      format.args = list(big.mark = ".", decimal.mark = ","))
+kable(head(df), digits = 2, format = type,
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      booktabs = TRUE) %>%
+  kable_styling(latex_options = "striped", position = "left")
 ```
+
+[^1]: https://github.com/lfpdroubi/planta_valores/blob/master/Sto_Amaro_4.kml
 
 b. Dados do Excel
 
@@ -78,18 +87,16 @@ Os dados da pesquisa de mercado foram lidos diretamente no `r R.version.string`.
 Dados <- read_excel("Dados.xlsx")
 Dados$pavimentado <- factor(Dados$pavimentado, levels = c("sim", "nao"))
 kable(head(Dados[, 1:9]), digits = 2,
-      format.args = list(big.mark = ".", decimal.mark = ","))
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      booktabs = TRUE)
 ```
 
 c. Aglutinação dos dados
 
-Posteriormente, os dados da pesquisa foram mesclados com as coordenadas dos dados. O conjunto de dados assim obtido pode ser visto na tabela 
+Posteriormente, os dados da pesquisa foram mesclados com as coordenadas dos dados. O conjunto de dados assim obtido pode ser visto na tabela \ref{tab:geo}
 
 ```{r, echo = 1}
 data <- inner_join(df, Dados, by = "ID")
-kable(data[, 1:11], digits = 2, 
-      format.args = list(big.mark = ".", decimal.mark = ",")) %>%
-  landscape()
 ```
 
 
@@ -97,117 +104,23 @@ kable(data[, 1:11], digits = 2,
 
 a. Criação do conjunto de dados espaciais
 
-```{r}
-data <- 
- SpatialPointsDataFrame(coords = data[c("E", "N")],
-                        data = data,
-                        proj4string = sp::CRS("+proj=longlat +datum=WGS84 +no_defs"))
-data$long <- coordinates(data)[, "E"]
-data$lat <- coordinates(data)[, "N"]
-# 2º opção -- deleta as colunas de coordenadas
-# coordinates(data) <- c("E", "N")
-# proj4string(data) <- CRS("+init=epsg:4326") # WGS 84
+Para a transformação dos dados em um conjunto de dados espaciais, basta informar ao \proglang{R} as colunas das coordenadas e o seu sistema de referência.
+
+```{r geo, echo = 1:2}
+coordinates(data) <- ~E+N
+proj4string(data) <- CRS("+init=epsg:4326") # WGS 84
+kable(data[, -c(10, 11)], digits = 2, 
+      format.args = list(big.mark = ".", decimal.mark = ","),
+      booktabs = TRUE, caption = "Dados com coordenadas geográficas (WGS-84)") %>%
+  landscape()
 miss <- is.na(data$Valor)
 ```
 
-b. Plotagem
+b. Escrita do Shapefile no disco
 
-```{r}
-spplot(data[!miss, ], "Valor")
-```
+Foi escrito um *shapefile* no disco à partir do conjunto de dados espaciais, através da função \code{writeOGR}, do pacote \pkg{rgdal}.
 
-c. Variograma
-
-```{r}
-plot(variogram(Valor ~ 1, data = data[!miss, ]))
-```
-
-d. Conversão de unidades
-
-```{r}
-# Conversão de coordenadas para SIRGAS2000
-CRS.new <- CRS("+init=epsg:31997")
-dataSIRGAS2000 <- spTransform(data, CRS.new)
-dataSIRGAS2000@data$E <- coordinates(dataSIRGAS2000)[, "E"]
-dataSIRGAS2000@data$N <- coordinates(dataSIRGAS2000)[, "N"]
-kable(dataSIRGAS2000, digits = 0, 
-      format.args = list(big.mark = ".", decimal.mark = ","))
-```
-
-e. Variograma com tendência espacial
-
-```{r}
-Valor_vgm <- variogram(log(Valor) ~ E + N, dataSIRGAS2000[!miss, ])
-plot(Valor_vgm) 
-```
-
-f. Ajuste de variograma
-
-```{r}
-# Fit the variogram
-v_model <- fit.variogram(
-  Valor_vgm, 
-  model = vgm(
-    model = "Ste",
-    nugget = 0.25,
-    psill = 1.25,
-    range = 1000,
-    kappa = 0.5
-  )
-)
-plot(Valor_vgm, model = v_model)
-```
-
-g. Krigagem
-
-* Manual
-
-```{r}
-# Define a 100m square grid over the polygon extent. The first parameter is
-# the bottom left corner.
-grid <- GridTopology(bbox(dataSIRGAS2000)[, "min"],  c(100, 100),
-                     c(72, 48))
-# Create points with the same coordinate system as the boundary
-gridpoints <- SpatialPoints(grid, proj4string = CRS(projection(dataSIRGAS2000)))
-plot(gridpoints)
-# Crop out the points outside the boundary
-cropped_gridpoints <- crop(gridpoints, dataSIRGAS2000)
-plot(cropped_gridpoints)
-
-# Convert to SpatialPixels
-spgrid <- SpatialPixels(cropped_gridpoints)
-coordnames(spgrid) <- c("E", "N")
-plot(spgrid)
-
-# Do kriging predictions over the grid
-V_grid <- krige(Valor ~ E + N, dataSIRGAS2000[!miss,], 
-                 newdata = spgrid, 
-                 model = v_model)
-
-spplot(V_grid)
-```
-
-* Automática
-
-```{r}
-## Auto-kriging at point locations
-# Kriging with linear trend, predicting over the missing points
-v_auto <- autoKrige(
-  Valor ~ E + N, 
-  input_data = dataSIRGAS2000[!miss, ], 
-  new_data = spgrid, 
-  model = "Mat"
-)
-plot(v_auto)
-
-# Remember predictions from manual kriging
-plot(v_auto)
-```
-
-
-h. Escrita do Shapefile no disco
-
-```{r}
+```{r, echo = TRUE}
 # Para escrever o shapefile no disco:  
  writeOGR(data, 
           dsn = "E:\\Documents\\UFSC\\Planta de Valores\\Trabalho", 
@@ -217,11 +130,30 @@ h. Escrita do Shapefile no disco
           delete_dsn = TRUE)
 ```
 
+c. Conversão de unidades
+
+O sistema de referência pode ser alterado através da função \code{spTransform}, do pacote \pkg{sp}. Por exemplo, para alterar para SIRGAS2000, basta informar o código EPSG deste sistema de referência (31997). Os dados com as coordenadas transformadas podem ser vistos na tabela \ref{tab:SIRGAS}.
+
+```{r SIRGAS, echo = 1:2}
+# Conversão de coordenadas para SIRGAS2000
+CRS.new <- CRS("+init=epsg:31997")
+dataSIRGAS2000 <- spTransform(data, CRS.new)
+kable(dataSIRGAS2000[, -c(10, 11)], digits = 0, 
+      format.args = list(big.mark = ".", decimal.mark = ","), 
+      booktabs = TRUE, caption = "Dados com coordenadas em SIRGAS2000") %>%
+  landscape() %>%
+  kable_styling(full_width = TRUE)
+```
+
 # Confecção de mapas temáticos
+
+Foram elaborados mapas temáticos de algumas variáveis pesquisadas, também com o auxílio do \proglang{R}. Nas figuras abaixo, o tamanho dos pontos foi escalonada de acordo com a escala de valor unitário para cada dado.
 
 a. Topografia
 
-```{r mapa1}
+Os terrenos foram classificados em plano (vermelho) e acidentado (azul), conforme pode ser visto na figura abaixo:
+
+```{r mapa1, out.width="50%"}
 # Create a palette that maps factor levels to colors
 pal <- colorFactor(c("navy", "red"), domain = c("plano", "acidentado"))
 ## create map
@@ -245,7 +177,9 @@ webshot("temp.html", file = "Map1.png",
 
 b. Pavimentação
 
-```{r mapa2}
+Na figura abaixo, os dados podem ser vistos em função da pavimentação da frente do lote, se asfalto (azul), *blokret* (verde) e sem pavimentação (vermelho).
+
+```{r mapa2, out.width="50%"}
 # Create a palette that maps factor levels to colors
 pal <- colorFactor(c("navy", "green", "red"), domain = c("asfalto", "blokret", "sem"))
 ## create map
@@ -269,7 +203,9 @@ webshot("temp.html", file = "Map2.png",
 
 c. Situação
 
-```{r mapa3}
+Na figura abaixo, os dados de meio de quadra são vistos em azul e os dados de esquina em vermelho.
+
+```{r mapa3, out.width="50%"}
 # Create a palette that maps factor levels to colors
 pal <- colorFactor(c("navy", "red"), domain = c("meio", "esquina"))
 ## create map
@@ -293,12 +229,15 @@ webshot("temp.html", file = "Map3.png",
 
 # Ajuste do modelo OLS
 
-```{r modelo}
+Foi ajustado inicialmente um modelo linear com todas as variáveis pesquisadas:
+
+```{r modelo, echo = TRUE}
 fit <- lm(VU ~ Area + Geral + topografia + pavimentado + situacao, data = data)
-summary(fit)
 ```
 
 # Diagrama de Box-Cox
+
+De posse do modelo linear, foi feito o diagrama de Box-Cox, para pesquisar melhores transformações para a variável dependente.
 
 ```{r}
 boxCox(fit)
@@ -306,9 +245,13 @@ boxCox(fit)
 
 # Modelo final
 
+Após efetuadas as transformações necessárias, removidos os *outliers* e as variáveis insignificantes, chegou-se ao modelo descrito na tabela \ref{tab:fit}.
+
 ```{r, results='asis'}
 fit <- update(fit, log(VU) ~ log(Area) + Geral + topografia, subset = -c(3, 21))
 stargazer(fit, header = FALSE, type = type,
+          title = "Coeficientes do modelo final",
+          label = "tab:fit",
           report = "vcstp*", ci = TRUE, single.row = TRUE)
 ```
 
@@ -402,6 +345,7 @@ ggplot(dat, aes(x = KSD, group = group, color = group))+
           legend.position = "bottom")
 ```
 
+\newpage
 
 ### Gráficos do modelo
 
@@ -420,11 +364,13 @@ p
 
 b. No ponto de avaliação
 
-```{r, out.width="100%", fig.cap = "Gráficos dos regressores em função da variável dependente (em cada gráfico, os outros regressores estão em seus valores médios."}
-p <- plotmod(fit, interval = "confidence", func = "log", local =  list(Area = 360, Geral = "sim", topografia = "plano"))
+```{r, out.width="100%", fig.cap = "Gráficos dos regressores em função da variável dependente (em cada gráfico, os outros regressores estão com os valores reais do avaliando."}
+p <- plotmod(fit, interval = "confidence", func = "log", 
+             local =  list(Area = 360, Geral = "sim", topografia = "plano"))
 names <- names(p$plots)
 for (name in names) {
-  p$plots[[name]] <- p$plots[[name]] + scale_y_continuous(labels = reais(nsmall = 0))
+  p$plots[[name]] <- p$plots[[name]] + 
+    scale_y_continuous(labels = reais(nsmall = 0))
 }
 p
 ```

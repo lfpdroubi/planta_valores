@@ -5,31 +5,28 @@
   <evaluateDefaultValues active="0"/>
   <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
     <customproperties/>
-    <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="output20180817183043820" source="C:\Users\218680~1\AppData\Local\Temp\processingb20dcfb875394064aecac7b7b2c871ea\d0baeb0440534e889d9d67f2245b08f7\output.shp" name="output">
-      <customproperties/>
-    </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="geral20180817162751283" source="E:/Documents/UFSC/Planta de Valores/Trabalho/geral.shp" name="geral">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="dados20180815160215025" source="E:/Documents/UFSC/Planta de Valores/Trabalho/dados.shp" name="dados">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Checked" id="curso_dagua20180704142104360" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ANA_curso_dagua&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="curso_dagua">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Checked" id="curso_dagua20180704142104360" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ANA_curso_dagua&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="curso_dagua">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="42157030500_face20180704152413317" source="E:/Documents/UFSC/Planta de Valores/Trabalho/42157030500_face.shp" name="42157030500_face">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Unchecked" id="Localidades20180704142225027" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Localidades&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="Localidades">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Unchecked" id="Localidades20180704142225027" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Localidades&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="Localidades">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Checked" id="LimitesMunic_201320180704142221819" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LimitesMunic-2013&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LimitesMunic-2013">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Checked" id="LimitesMunic_201320180704142221819" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LimitesMunic-2013&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LimitesMunic-2013">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Checked" id="LIM_Unidade_Federacao_A20180704142219468" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LIM_Unidade_Federacao_A&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LIM_Unidade_Federacao_A">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Checked" id="LIM_Unidade_Federacao_A20180704142219468" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LIM_Unidade_Federacao_A&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LIM_Unidade_Federacao_A">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Unchecked" id="arruamento_sc20180704142213426" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ArruamentoOsm-2015&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="arruamento-sc">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Unchecked" id="arruamento_sc20180704142213426" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ArruamentoOsm-2015&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="arruamento-sc">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Unchecked" id="SIGSC_OrtoRGB_Landsat_201220180704141849875" source="contextualWMSLegend=0&amp;crs=EPSG:31982&amp;dpiMode=7&amp;featureCount=10&amp;format=image/jpeg&amp;layers=SIGSC:OrtoRGB-Landsat-2012&amp;styles=&amp;tileMatrixSet=EPSG:31982&amp;url=http://sigsc.sc.gov.br/sigserver/gwc/service/wmts" name="SIGSC:OrtoRGB-Landsat-2012">
@@ -40,10 +37,10 @@
   <mapcanvas>
     <units>degrees</units>
     <extent>
-      <xmin>-48.80774402902228104</xmin>
-      <ymin>-27.70464484543439454</ymin>
-      <xmax>-48.77030789972304348</xmax>
-      <ymax>-27.68475056908449261</ymax>
+      <xmin>-48.79677002854162282</xmin>
+      <ymin>-27.70710086625996027</ymin>
+      <xmax>-48.72189776994314769</xmax>
+      <ymax>-27.66731231356015641</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
@@ -66,8 +63,11 @@
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4674" srcDatumTransform="-1" destDatumTransform="-1" layerid="42157030500_face20180704152413317"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="dados20180815160215025"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="LimitesMunic_201320180704142221819"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="kriging_variance20180821124005260"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="LIM_Unidade_Federacao_A20180704142219468"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20180817183043820"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="kriging_prediction20180821124005290"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Localidades20180704142225027"/>
     </layer_coordinate_transform_info>
   </mapcanvas>
   <layer-tree-canvas>
@@ -81,15 +81,9 @@
       <item>42157030500_face20180704152413317</item>
       <item>dados20180815160215025</item>
       <item>geral20180817162751283</item>
-      <item>output20180817183043820</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="output" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="output20180817183043820" visible="1"/>
-      </filegroup>
-    </legendlayer>
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="geral" showFeatureCount="0">
       <filegroup open="true" hidden="false">
         <legendlayerfile isInOverview="0" layerid="geral20180817162751283" visible="1"/>
@@ -100,8 +94,8 @@
         <legendlayerfile isInOverview="0" layerid="dados20180815160215025" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="curso_dagua" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="curso_dagua" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="curso_dagua20180704142104360" visible="1"/>
       </filegroup>
     </legendlayer>
@@ -110,23 +104,23 @@
         <legendlayerfile isInOverview="0" layerid="42157030500_face20180704152413317" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="Localidades" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Localidades" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="Localidades20180704142225027" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="LimitesMunic-2013" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="LimitesMunic-2013" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="LimitesMunic_201320180704142221819" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="LIM_Unidade_Federacao_A" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="LIM_Unidade_Federacao_A" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="LIM_Unidade_Federacao_A20180704142219468" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="arruamento-sc" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="arruamento-sc" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="arruamento_sc20180704142213426" visible="0"/>
       </filegroup>
     </legendlayer>
@@ -616,12 +610,6 @@
         <edittype widgetv2type="TextEdit" name="ID">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
-        <edittype widgetv2type="TextEdit" name="N">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="E">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
         <edittype widgetv2type="TextEdit" name="Area">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
@@ -650,12 +638,6 @@
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="Link">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="long">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="lat">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
@@ -888,20 +870,16 @@
       <annotationform>.</annotationform>
       <aliases>
         <alias field="ID" index="0" name=""/>
-        <alias field="N" index="1" name=""/>
-        <alias field="E" index="2" name=""/>
-        <alias field="Area" index="3" name=""/>
-        <alias field="Valor" index="4" name=""/>
-        <alias field="VU" index="5" name=""/>
-        <alias field="Geral" index="6" name=""/>
-        <alias field="topogrf" index="7" name=""/>
-        <alias field="pavmntc" index="8" name=""/>
-        <alias field="pavmntd" index="9" name=""/>
-        <alias field="situaca" index="10" name=""/>
-        <alias field="imobilr" index="11" name=""/>
-        <alias field="Link" index="12" name=""/>
-        <alias field="long" index="13" name=""/>
-        <alias field="lat" index="14" name=""/>
+        <alias field="Area" index="1" name=""/>
+        <alias field="Valor" index="2" name=""/>
+        <alias field="VU" index="3" name=""/>
+        <alias field="Geral" index="4" name=""/>
+        <alias field="topogrf" index="5" name=""/>
+        <alias field="pavmntc" index="6" name=""/>
+        <alias field="pavmntd" index="7" name=""/>
+        <alias field="situaca" index="8" name=""/>
+        <alias field="imobilr" index="9" name=""/>
+        <alias field="Link" index="10" name=""/>
       </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -956,8 +934,6 @@ def my_form_open(diálogo, camada, feição):
       </conditionalstyles>
       <defaults>
         <default field="ID" expression=""/>
-        <default field="N" expression=""/>
-        <default field="E" expression=""/>
         <default field="Area" expression=""/>
         <default field="Valor" expression=""/>
         <default field="VU" expression=""/>
@@ -968,8 +944,6 @@ def my_form_open(diálogo, camada, feição):
         <default field="situaca" expression=""/>
         <default field="imobilr" expression=""/>
         <default field="Link" expression=""/>
-        <default field="long" expression=""/>
-        <default field="lat" expression=""/>
       </defaults>
       <previewExpression>COALESCE( "ID", '&lt;NULL>' )</previewExpression>
     </maplayer>
@@ -1278,152 +1252,6 @@ def my_form_open(diálogo, camada, feição):
         <default field="id" expression=""/>
       </defaults>
       <previewExpression>COALESCE( "id", '&lt;NULL>' )</previewExpression>
-    </maplayer>
-    <maplayer simplifyAlgorithm="0" minimumScale="0" maximumScale="1e+08" simplifyDrawingHints="1" minLabelScale="0" maxLabelScale="1e+08" simplifyDrawingTol="1" readOnly="0" geometry="Point" simplifyMaxScale="1" type="vector" hasScaleBasedVisibilityFlag="0" simplifyLocal="1" scaleBasedLabelVisibilityFlag="0">
-      <extent>
-        <xmin>-48.77920628999999764</xmin>
-        <ymin>-27.69160589000000172</ymin>
-        <xmax>-48.74405646000000303</xmax>
-        <ymax>-27.6814360999999991</ymax>
-      </extent>
-      <id>output20180817183043820</id>
-      <datasource>C:\Users\218680~1\AppData\Local\Temp\processingb20dcfb875394064aecac7b7b2c871ea\d0baeb0440534e889d9d67f2245b08f7\output.shp</datasource>
-      <keywordList>
-        <value></value>
-      </keywordList>
-      <layername>output</layername>
-      <srs>
-        <spatialrefsys>
-          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
-          <srsid>3452</srsid>
-          <srid>4326</srid>
-          <authid>EPSG:4326</authid>
-          <description>WGS 84</description>
-          <projectionacronym>longlat</projectionacronym>
-          <ellipsoidacronym>WGS84</ellipsoidacronym>
-          <geographicflag>true</geographicflag>
-        </spatialrefsys>
-      </srs>
-      <provider encoding="System">ogr</provider>
-      <vectorjoins/>
-      <layerDependencies/>
-      <expressionfields/>
-      <map-layer-style-manager current="">
-        <map-layer-style name=""/>
-      </map-layer-style-manager>
-      <edittypes>
-        <edittype widgetv2type="TextEdit" name="distanc">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="lon">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="lat">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="ID">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="L1[[F]]">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-      </edittypes>
-      <renderer-v2 forceraster="0" symbollevels="0" type="singleSymbol" enableorderby="0">
-        <symbols>
-          <symbol alpha="1" clip_to_extent="1" type="marker" name="0">
-            <layer pass="0" class="SimpleMarker" locked="0">
-              <prop k="angle" v="0"/>
-              <prop k="color" v="4,228,252,255"/>
-              <prop k="horizontal_anchor_point" v="1"/>
-              <prop k="joinstyle" v="bevel"/>
-              <prop k="name" v="circle"/>
-              <prop k="offset" v="0,0"/>
-              <prop k="offset_map_unit_scale" v="0,0,0,0,0,0"/>
-              <prop k="offset_unit" v="MM"/>
-              <prop k="outline_color" v="0,0,0,255"/>
-              <prop k="outline_style" v="solid"/>
-              <prop k="outline_width" v="0"/>
-              <prop k="outline_width_map_unit_scale" v="0,0,0,0,0,0"/>
-              <prop k="outline_width_unit" v="MM"/>
-              <prop k="scale_method" v="diameter"/>
-              <prop k="size" v="2"/>
-              <prop k="size_map_unit_scale" v="0,0,0,0,0,0"/>
-              <prop k="size_unit" v="MM"/>
-              <prop k="vertical_anchor_point" v="1"/>
-            </layer>
-          </symbol>
-        </symbols>
-        <rotation/>
-        <sizescale scalemethod="diameter"/>
-      </renderer-v2>
-      <labeling type="simple"/>
-      <customproperties/>
-      <blendMode>0</blendMode>
-      <featureBlendMode>0</featureBlendMode>
-      <layerTransparency>0</layerTransparency>
-      <displayfield>ID</displayfield>
-      <label>0</label>
-      <labelattributes>
-        <label fieldname="" text="Rótulo"/>
-        <family fieldname="" name="MS Shell Dlg 2"/>
-        <size fieldname="" units="pt" value="12"/>
-        <bold fieldname="" on="0"/>
-        <italic fieldname="" on="0"/>
-        <underline fieldname="" on="0"/>
-        <strikeout fieldname="" on="0"/>
-        <color fieldname="" red="0" blue="0" green="0"/>
-        <x fieldname=""/>
-        <y fieldname=""/>
-        <offset x="0" y="0" units="pt" yfieldname="" xfieldname=""/>
-        <angle fieldname="" value="0" auto="0"/>
-        <alignment fieldname="" value="center"/>
-        <buffercolor fieldname="" red="255" blue="255" green="255"/>
-        <buffersize fieldname="" units="pt" value="1"/>
-        <bufferenabled fieldname="" on=""/>
-        <multilineenabled fieldname="" on=""/>
-        <selectedonly on=""/>
-      </labelattributes>
-      <annotationform></annotationform>
-      <aliases>
-        <alias field="distanc" index="0" name=""/>
-        <alias field="lon" index="1" name=""/>
-        <alias field="lat" index="2" name=""/>
-        <alias field="ID" index="3" name=""/>
-        <alias field="L1[[F]]" index="4" name=""/>
-      </aliases>
-      <excludeAttributesWMS/>
-      <excludeAttributesWFS/>
-      <attributeactions default="-1"/>
-      <attributetableconfig actionWidgetStyle="dropDown" sortExpression="&quot;distanc&quot;" sortOrder="0">
-        <columns>
-          <column width="-1" hidden="0" type="field" name="distanc"/>
-          <column width="-1" hidden="0" type="field" name="lon"/>
-          <column width="-1" hidden="0" type="field" name="lat"/>
-          <column width="-1" hidden="0" type="field" name="ID"/>
-          <column width="-1" hidden="0" type="field" name="L1[[F]]"/>
-          <column width="-1" hidden="1" type="actions"/>
-        </columns>
-      </attributetableconfig>
-      <editform></editform>
-      <editforminit/>
-      <editforminitcodesource>0</editforminitcodesource>
-      <editforminitfilepath></editforminitfilepath>
-      <editforminitcode><![CDATA[]]></editforminitcode>
-      <featformsuppress>0</featformsuppress>
-      <editorlayout>generatedlayout</editorlayout>
-      <widgets/>
-      <conditionalstyles>
-        <rowstyles/>
-        <fieldstyles/>
-      </conditionalstyles>
-      <defaults>
-        <default field="distanc" expression=""/>
-        <default field="lon" expression=""/>
-        <default field="lat" expression=""/>
-        <default field="ID" expression=""/>
-        <default field="L1[[F]]" expression=""/>
-      </defaults>
-      <previewExpression>COALESCE( "ID", '&lt;NULL>' )</previewExpression>
     </maplayer>
   </projectlayers>
   <properties>

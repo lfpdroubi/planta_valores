@@ -5,28 +5,34 @@
   <evaluateDefaultValues active="0"/>
   <layer-tree-group expanded="1" checked="Qt::PartiallyChecked" name="">
     <customproperties/>
+    <layer-tree-layer expanded="1" providerKey="gdal" checked="Qt::Unchecked" id="kriging_prediction20180821124005290" source="C:\Users\218680~1\AppData\Local\Temp\processingcbd7c6ab61ae40ada466b35bcb69880c\eb220c15039e441a91f13829d8fbe1fe\krigingprediction.tif" name="kriging_prediction">
+      <customproperties/>
+    </layer-tree-layer>
+    <layer-tree-layer expanded="1" providerKey="gdal" checked="Qt::Unchecked" id="kriging_variance20180821124005260" source="C:\Users\218680~1\AppData\Local\Temp\processingcbd7c6ab61ae40ada466b35bcb69880c\db6a68a6352e4163a08f2bb12a978935\krigingvariance.tif" name="kriging_variance">
+      <customproperties/>
+    </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="geral20180817162751283" source="E:/Documents/UFSC/Planta de Valores/Trabalho/geral.shp" name="geral">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="dados20180815160215025" source="E:/Documents/UFSC/Planta de Valores/Trabalho/dados.shp" name="dados">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Checked" id="curso_dagua20180704142104360" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ANA_curso_dagua&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="curso_dagua">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Checked" id="curso_dagua20180704142104360" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ANA_curso_dagua&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="curso_dagua">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="ogr" checked="Qt::Checked" id="42157030500_face20180704152413317" source="E:/Documents/UFSC/Planta de Valores/Trabalho/42157030500_face.shp" name="42157030500_face">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Unchecked" id="Localidades20180704142225027" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Localidades&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="Localidades">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Unchecked" id="Localidades20180704142225027" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=Localidades&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="Localidades">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Checked" id="LimitesMunic_201320180704142221819" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LimitesMunic-2013&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LimitesMunic-2013">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Checked" id="LimitesMunic_201320180704142221819" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LimitesMunic-2013&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LimitesMunic-2013">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Checked" id="LIM_Unidade_Federacao_A20180704142219468" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LIM_Unidade_Federacao_A&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LIM_Unidade_Federacao_A">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Checked" id="LIM_Unidade_Federacao_A20180704142219468" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=LIM_Unidade_Federacao_A&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="LIM_Unidade_Federacao_A">
       <customproperties/>
     </layer-tree-layer>
-    <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Unchecked" id="arruamento_sc20180704142213426" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ArruamentoOsm-2015&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="arruamento-sc">
+    <layer-tree-layer expanded="0" providerKey="wms" checked="Qt::Unchecked" id="arruamento_sc20180704142213426" source="contextualWMSLegend=0&amp;crs=EPSG:4326&amp;dpiMode=7&amp;featureCount=10&amp;format=image/png&amp;layers=ArruamentoOsm-2015&amp;styles=&amp;url=http://sigsc.sc.gov.br/sigserver/SIGSC/wms" name="arruamento-sc">
       <customproperties/>
     </layer-tree-layer>
     <layer-tree-layer expanded="1" providerKey="wms" checked="Qt::Unchecked" id="SIGSC_OrtoRGB_Landsat_201220180704141849875" source="contextualWMSLegend=0&amp;crs=EPSG:31982&amp;dpiMode=7&amp;featureCount=10&amp;format=image/jpeg&amp;layers=SIGSC:OrtoRGB-Landsat-2012&amp;styles=&amp;tileMatrixSet=EPSG:31982&amp;url=http://sigsc.sc.gov.br/sigserver/gwc/service/wmts" name="SIGSC:OrtoRGB-Landsat-2012">
@@ -37,10 +43,10 @@
   <mapcanvas>
     <units>degrees</units>
     <extent>
-      <xmin>-48.92113453490387798</xmin>
-      <ymin>-27.73920903703881891</ymin>
-      <xmax>-48.62164550050997747</xmax>
-      <ymax>-27.58005482623954663</ymax>
+      <xmin>-48.79677002854162282</xmin>
+      <ymin>-27.70710086625996027</ymin>
+      <xmax>-48.72189776994314769</xmax>
+      <ymax>-27.66731231356015641</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
@@ -63,7 +69,11 @@
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4674" srcDatumTransform="-1" destDatumTransform="-1" layerid="42157030500_face20180704152413317"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="dados20180815160215025"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="LimitesMunic_201320180704142221819"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="kriging_variance20180821124005260"/>
       <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="LIM_Unidade_Federacao_A20180704142219468"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="output20180817183043820"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="kriging_prediction20180821124005290"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Localidades20180704142225027"/>
     </layer_coordinate_transform_info>
   </mapcanvas>
   <layer-tree-canvas>
@@ -77,9 +87,21 @@
       <item>42157030500_face20180704152413317</item>
       <item>dados20180815160215025</item>
       <item>geral20180817162751283</item>
+      <item>kriging_variance20180821124005260</item>
+      <item>kriging_prediction20180821124005290</item>
     </custom-order>
   </layer-tree-canvas>
   <legend updateDrawingOrder="true">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="kriging_prediction" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" layerid="kriging_prediction20180821124005290" visible="0"/>
+      </filegroup>
+    </legendlayer>
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="kriging_variance" showFeatureCount="0">
+      <filegroup open="true" hidden="false">
+        <legendlayerfile isInOverview="0" layerid="kriging_variance20180821124005260" visible="0"/>
+      </filegroup>
+    </legendlayer>
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="geral" showFeatureCount="0">
       <filegroup open="true" hidden="false">
         <legendlayerfile isInOverview="0" layerid="geral20180817162751283" visible="1"/>
@@ -90,8 +112,8 @@
         <legendlayerfile isInOverview="0" layerid="dados20180815160215025" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="curso_dagua" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="curso_dagua" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="curso_dagua20180704142104360" visible="1"/>
       </filegroup>
     </legendlayer>
@@ -100,23 +122,23 @@
         <legendlayerfile isInOverview="0" layerid="42157030500_face20180704152413317" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="Localidades" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="Localidades" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="Localidades20180704142225027" visible="0"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="LimitesMunic-2013" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="LimitesMunic-2013" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="LimitesMunic_201320180704142221819" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" name="LIM_Unidade_Federacao_A" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Checked" name="LIM_Unidade_Federacao_A" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="LIM_Unidade_Federacao_A20180704142219468" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Unchecked" name="arruamento-sc" showFeatureCount="0">
-      <filegroup open="true" hidden="false">
+    <legendlayer drawingOrder="-1" open="false" checked="Qt::Unchecked" name="arruamento-sc" showFeatureCount="0">
+      <filegroup open="false" hidden="false">
         <legendlayerfile isInOverview="0" layerid="arruamento_sc20180704142213426" visible="0"/>
       </filegroup>
     </legendlayer>
@@ -606,12 +628,6 @@
         <edittype widgetv2type="TextEdit" name="ID">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
-        <edittype widgetv2type="TextEdit" name="N">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="E">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
         <edittype widgetv2type="TextEdit" name="Area">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
@@ -640,12 +656,6 @@
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
         <edittype widgetv2type="TextEdit" name="Link">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="long">
-          <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
-        </edittype>
-        <edittype widgetv2type="TextEdit" name="lat">
           <widgetv2config IsMultiline="0" fieldEditable="1" constraint="" UseHtml="0" labelOnTop="0" constraintDescription="" notNull="0"/>
         </edittype>
       </edittypes>
@@ -878,20 +888,16 @@
       <annotationform>.</annotationform>
       <aliases>
         <alias field="ID" index="0" name=""/>
-        <alias field="N" index="1" name=""/>
-        <alias field="E" index="2" name=""/>
-        <alias field="Area" index="3" name=""/>
-        <alias field="Valor" index="4" name=""/>
-        <alias field="VU" index="5" name=""/>
-        <alias field="Geral" index="6" name=""/>
-        <alias field="topogrf" index="7" name=""/>
-        <alias field="pavmntc" index="8" name=""/>
-        <alias field="pavmntd" index="9" name=""/>
-        <alias field="situaca" index="10" name=""/>
-        <alias field="imobilr" index="11" name=""/>
-        <alias field="Link" index="12" name=""/>
-        <alias field="long" index="13" name=""/>
-        <alias field="lat" index="14" name=""/>
+        <alias field="Area" index="1" name=""/>
+        <alias field="Valor" index="2" name=""/>
+        <alias field="VU" index="3" name=""/>
+        <alias field="Geral" index="4" name=""/>
+        <alias field="topogrf" index="5" name=""/>
+        <alias field="pavmntc" index="6" name=""/>
+        <alias field="pavmntd" index="7" name=""/>
+        <alias field="situaca" index="8" name=""/>
+        <alias field="imobilr" index="9" name=""/>
+        <alias field="Link" index="10" name=""/>
       </aliases>
       <excludeAttributesWMS/>
       <excludeAttributesWFS/>
@@ -946,8 +952,6 @@ def my_form_open(diálogo, camada, feição):
       </conditionalstyles>
       <defaults>
         <default field="ID" expression=""/>
-        <default field="N" expression=""/>
-        <default field="E" expression=""/>
         <default field="Area" expression=""/>
         <default field="Valor" expression=""/>
         <default field="VU" expression=""/>
@@ -958,8 +962,6 @@ def my_form_open(diálogo, camada, feição):
         <default field="situaca" expression=""/>
         <default field="imobilr" expression=""/>
         <default field="Link" expression=""/>
-        <default field="long" expression=""/>
-        <default field="lat" expression=""/>
       </defaults>
       <previewExpression>COALESCE( "ID", '&lt;NULL>' )</previewExpression>
     </maplayer>
@@ -1269,6 +1271,106 @@ def my_form_open(diálogo, camada, feição):
       </defaults>
       <previewExpression>COALESCE( "id", '&lt;NULL>' )</previewExpression>
     </maplayer>
+    <maplayer minimumScale="0" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>-48.79997638463639476</xmin>
+        <ymin>-27.7109648867679681</ymin>
+        <xmax>-48.7270501338589952</xmax>
+        <ymax>-27.67618467485874589</ymax>
+      </extent>
+      <id>kriging_prediction20180821124005290</id>
+      <datasource>C:\Users\218680~1\AppData\Local\Temp\processingcbd7c6ab61ae40ada466b35bcb69880c\eb220c15039e441a91f13829d8fbe1fe\krigingprediction.tif</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>kriging_prediction</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <customproperties>
+        <property key="identify/format" value="Value"/>
+      </customproperties>
+      <provider>gdal</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="1"/>
+      </noData>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer gradient="BlackToWhite" opacity="1" alphaBand="-1" type="singlebandgray" grayBand="1">
+          <rasterTransparency/>
+          <contrastEnhancement>
+            <minValue>370.63599267578127</minValue>
+            <maxValue>673.0853707885742</maxValue>
+            <algorithm>StretchToMinimumMaximum</algorithm>
+          </contrastEnhancement>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" colorizeOn="0" colorizeRed="255" colorizeBlue="128" grayscaleMode="0" saturation="0" colorizeStrength="100"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
+    <maplayer minimumScale="0" maximumScale="1e+08" type="raster" hasScaleBasedVisibilityFlag="0">
+      <extent>
+        <xmin>-48.79997638463639476</xmin>
+        <ymin>-27.7109648867679681</ymin>
+        <xmax>-48.7270501338589952</xmax>
+        <ymax>-27.67618467485874589</ymax>
+      </extent>
+      <id>kriging_variance20180821124005260</id>
+      <datasource>C:\Users\218680~1\AppData\Local\Temp\processingcbd7c6ab61ae40ada466b35bcb69880c\db6a68a6352e4163a08f2bb12a978935\krigingvariance.tif</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>kriging_variance</layername>
+      <srs>
+        <spatialrefsys>
+          <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+          <srsid>3452</srsid>
+          <srid>4326</srid>
+          <authid>EPSG:4326</authid>
+          <description>WGS 84</description>
+          <projectionacronym>longlat</projectionacronym>
+          <ellipsoidacronym>WGS84</ellipsoidacronym>
+          <geographicflag>true</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <customproperties>
+        <property key="identify/format" value="Value"/>
+      </customproperties>
+      <provider>gdal</provider>
+      <noData>
+        <noDataList bandNo="1" useSrcNoData="1"/>
+      </noData>
+      <map-layer-style-manager current="">
+        <map-layer-style name=""/>
+      </map-layer-style-manager>
+      <pipe>
+        <rasterrenderer gradient="BlackToWhite" opacity="1" alphaBand="-1" type="singlebandgray" grayBand="1">
+          <rasterTransparency/>
+          <contrastEnhancement>
+            <minValue>116860.65635546876</minValue>
+            <maxValue>187817.36848046875</maxValue>
+            <algorithm>StretchToMinimumMaximum</algorithm>
+          </contrastEnhancement>
+        </rasterrenderer>
+        <brightnesscontrast brightness="0" contrast="0"/>
+        <huesaturation colorizeGreen="128" colorizeOn="0" colorizeRed="255" colorizeBlue="128" grayscaleMode="0" saturation="0" colorizeStrength="100"/>
+        <rasterresampler maxOversampling="2"/>
+      </pipe>
+      <blendMode>0</blendMode>
+    </maplayer>
   </projectlayers>
   <properties>
     <Variables>
@@ -1288,9 +1390,9 @@ def my_form_open(diálogo, camada, feição):
     </Paths>
     <WMSServiceTitle type="QString"></WMSServiceTitle>
     <WFSLayers type="QStringList"/>
+    <WMSRestrictedLayers type="QStringList"/>
     <WMSContactMail type="QString"></WMSContactMail>
     <WMSRestrictedComposers type="QStringList"/>
-    <WMSRestrictedLayers type="QStringList"/>
     <PositionPrecision>
       <DecimalPlaces type="int">2</DecimalPlaces>
       <Automatic type="bool">true</Automatic>
